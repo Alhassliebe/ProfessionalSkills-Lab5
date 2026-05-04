@@ -1,0 +1,12 @@
+stages:
+  analyse:
+    cmd: python src/analyse.py
+    deps: [src/analyse.py, data/embeddings.npz]
+    outs: [data/results/summary.csv, data/results/distances.npz]
+    metrics:
+      - data/results/metrics.json:
+          cache: false
+  visualise:
+    cmd: python src/visualise.py
+    deps: [src/visualise.py, data/results/distances.npz, data/results/summary.csv]
+    outs: [data/results/distributions.png, data/results/comparison.png]

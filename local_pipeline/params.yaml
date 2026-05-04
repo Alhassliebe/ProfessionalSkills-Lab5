@@ -1,0 +1,2 @@
+features: data/embeddings.npz
+results: data/results

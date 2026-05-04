@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  analyse:
+    cmd: python src/analyse.py
+    deps:
+    - path: data/embeddings.npz
+      hash: md5
+      md5: 1daa794dee92489195595cac77a17384
+      size: 8444396
+    - path: src/analyse.py
+      hash: md5
+      md5: a662a511561bc60642a0e695860e990c
+      size: 1769
+    outs:
+    - path: data/results/distances.npz
+      hash: md5
+      md5: 00cb90a7f351436ff2423d60603ff1a7
+      size: 31467824
+    - path: data/results/metrics.json
+      hash: md5
+      md5: 6e4438bc9121a5806a321d4d2f8332d4
+      size: 876
+    - path: data/results/summary.csv
+      hash: md5
+      md5: f81751a410c3386c76e6c3eaf34626fb
+      size: 418
+  visualise:
+    cmd: python src/visualise.py
+    deps:
+    - path: data/results/distances.npz
+      hash: md5
+      md5: 00cb90a7f351436ff2423d60603ff1a7
+      size: 31467824
+    - path: data/results/summary.csv
+      hash: md5
+      md5: f81751a410c3386c76e6c3eaf34626fb
+      size: 418
+    - path: src/visualise.py
+      hash: md5
+      md5: 840b82f12b53876de3d8f76e457be4a2
+      size: 1217
+    outs:
+    - path: data/results/comparison.png
+      hash: md5
+      md5: 4c8887ae3d3db072cc022e82ab671954
+      size: 43545
+    - path: data/results/distributions.png
+      hash: md5
+      md5: 852600dd9bd8f2a55671e768c183432d
+      size: 34123
